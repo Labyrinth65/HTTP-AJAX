@@ -3,10 +3,10 @@ import React from "react";
 const FriendCard = props => {
 	console.log(props);
 	return (
-		<div>
-			<div>{props.name}</div>
-			<div>{props.age}</div>
-			<div>{props.email}</div>
+		<div className="friendCard">
+			<div className="cardElement">{props.name}</div>
+			<div className="cardElement">{props.age}</div>
+			<div className="cardElement">{props.email}</div>
 		</div>
 	);
 };

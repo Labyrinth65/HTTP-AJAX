@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import axios from "axios";
 import { Route } from "react-router-dom";
 import FriendList from "./components/FriendList/FriendList";
+import FriendAdd from "./components/FriendAdd/FriendAdd";
 
 export class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			friends: []
+			friends: [],
+			name: "",
+			age: "",
+			email: ""
 		};
 	}
 
@@ -16,18 +20,42 @@ export class App extends Component {
 		axios
 			.get(`http://localhost:5000/friends`)
 			.then(response => {
-				console.log(response);
 				this.setState({ friends: response.data });
 			})
 			.catch(err => {
-				this.setState({ error: err.response.message });
+				this.setState({ error: err.message });
 			});
 	}
+
+	handleChange = e => {
+		this.setState({ [e.target.name]: e.target.value });
+	};
+
+	addFriend = e => {
+		e.preventDefault();
+		const newFriend = {
+			id: Date.now(),
+			name: this.state.name,
+			age: this.state.age,
+			email: this.state.email
+		};
+		this.setState(prevState => ({
+			friends: [...prevState.friends, newFriend],
+			name: "",
+			age: "",
+			email: ""
+		}));
+	};
 
 	render() {
 		return (
 			<div>
 				<FriendList {...this.state} />
+				<FriendAdd
+					{...this.state}
+					handleChange={this.handleChange}
+					addFriend={this.addFriend}
+				/>
 			</div>
 		);
 	}
