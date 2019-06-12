@@ -8,12 +8,19 @@
 	display: flex;
 	flex-flow: column wrap;
 	background: lightgrey;
-	padding: 1%;
+	padding: 0 1% 1% 1%;
 	margin: 1%;
 	width: 25%;
 	.cardElement {
 		font-size: 1.5rem;
 		text-align: center;
+	}
+	.deleteDiv {
+		display: flex;
+		justify-content: flex-end;
+		.deleteButton {
+			width: 10%;
+		}
 	}
 }
 

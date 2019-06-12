@@ -10,6 +10,7 @@ const FriendAdd = props => {
 				name="name"
 				placeholder="Enter Name"
 				value={props.name}
+				type="text"
 				className="addElement"
 			/>
 			Age:{" "}
@@ -18,6 +19,7 @@ const FriendAdd = props => {
 				name="age"
 				placeholder="Enter Age"
 				value={props.age}
+				type="number"
 				className="addElement"
 			/>
 			Email:{" "}
@@ -26,6 +28,7 @@ const FriendAdd = props => {
 				name="email"
 				placeholder="Enter Email"
 				value={props.email}
+				type="email"
 				className="addElement"
 			/>
 			<button>Add Friend</button>

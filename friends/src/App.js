@@ -34,9 +34,9 @@ export class App extends Component {
 	addFriend = e => {
 		e.preventDefault();
 		const newFriend = {
-			id: Date.now(),
+			// id: Date.now(),
 			name: this.state.name,
-			age: this.state.age,
+			age: parseInt(this.state.age),
 			email: this.state.email
 		};
 		// this.setState(prevState => ({
