@@ -39,12 +39,20 @@ export class App extends Component {
 			age: this.state.age,
 			email: this.state.email
 		};
-		this.setState(prevState => ({
-			friends: [...prevState.friends, newFriend],
-			name: "",
-			age: "",
-			email: ""
-		}));
+		// this.setState(prevState => ({
+		// 	friends: [...prevState.friends, newFriend],
+		// 	name: "",
+		// 	age: "",
+		// 	email: ""
+		// }));
+		axios
+			.post(`http://localhost:5000/friends`, newFriend)
+			.then(res => {
+				this.setState({ friends: res.data });
+			})
+			.catch(err => {
+				this.setState({ error: err.message });
+			});
 	};
 
 	render() {
