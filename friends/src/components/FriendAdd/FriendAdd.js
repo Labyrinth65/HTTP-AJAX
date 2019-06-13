@@ -1,7 +1,6 @@
 import React from "react";
 
 const FriendAdd = props => {
-	console.log(props);
 	return (
 		<form onSubmit={props.addFriend} className="friendAdd">
 			Name:{" "}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import axios from "axios";
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import FriendList from "./components/FriendList/FriendList";
 import FriendAdd from "./components/FriendAdd/FriendAdd";
 
@@ -55,10 +55,47 @@ export class App extends Component {
 			});
 	};
 
+	deleteFriend = (e, id) => {
+		// this.setState(prevState => ({
+		// 	friends: prevState.friends.filter(friend => friend.id !== id)
+		// }));
+		e.preventDefault();
+		axios
+			.delete(`http://localhost:5000/friends/${id}`)
+			.then(res => {
+				this.setState({ friends: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+				this.setState({ error: err.message });
+			});
+	};
+
+	updateFriend = (e, id, updatedFriend) => {
+		// this.setState(prevState => ({
+		// 	friends: prevState.friends.filter(friend => friend.id !== id)
+		// }));
+		e.preventDefault();
+		axios
+			.put(`http://localhost:5000/friends/${id}`, updatedFriend)
+			.then(res => {
+				this.setState({ friends: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+				this.setState({ error: err.message });
+			});
+	};
+
 	render() {
 		return (
 			<div>
-				<FriendList {...this.state} />
+				<FriendList
+					{...this.state}
+					deleteFriend={this.deleteFriend}
+					updateFriend={this.updateFriend}
+					handleChange={this.handleChange}
+				/>
 				<FriendAdd
 					{...this.state}
 					handleChange={this.handleChange}
