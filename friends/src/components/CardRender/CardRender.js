@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class CardRender extends Component {
 	constructor(props) {
@@ -25,7 +26,6 @@ export class CardRender extends Component {
 	};
 
 	render() {
-		console.log(this.props);
 		if (this.props.updating === false) {
 			return (
 				<div>
@@ -68,5 +68,11 @@ export class CardRender extends Component {
 			);
 	}
 }
+
+CardRender.propTypes = {
+	name: PropTypes.string.isRequired,
+	age: PropTypes.number.isRequired,
+	email: PropTypes.string.isRequired
+};
 
 export default CardRender;
