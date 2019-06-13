@@ -1,7 +1,27 @@
-.friendList {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-evenly;
+.friendListWrap {
+	.friendList {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
+	}
+	.addNavigate {
+		display: flex;
+		justify-content: center;
+		margin: 1% 0;
+		.addNavButton {
+			text-decoration: none;
+			color: black;
+			button {
+				padding: 5% 10%;
+			}
+		}
+	}
+}
+
+.toHome {
+	button {
+		margin: 1%;
+	}
 }
 
 .friendCard {

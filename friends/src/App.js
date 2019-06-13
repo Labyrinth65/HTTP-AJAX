@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import axios from "axios";
-// import { Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import FriendList from "./components/FriendList/FriendList";
 import FriendAdd from "./components/FriendAdd/FriendAdd";
 
@@ -90,16 +90,34 @@ export class App extends Component {
 	render() {
 		return (
 			<div>
-				<FriendList
+				<Route
+					exact
+					path="/"
+					render={props => (
+						<FriendList
+							{...props}
+							friends={this.state.friends}
+							deleteFriend={this.deleteFriend}
+							updateFriend={this.updateFriend}
+							handleChange={this.handleChange}
+						/>
+					)}
+				/>
+				{/* <FriendList
 					{...this.state}
 					deleteFriend={this.deleteFriend}
 					updateFriend={this.updateFriend}
 					handleChange={this.handleChange}
-				/>
-				<FriendAdd
-					{...this.state}
-					handleChange={this.handleChange}
-					addFriend={this.addFriend}
+				/> */}
+				<Route
+					path="/add"
+					render={props => (
+						<FriendAdd
+							{...props}
+							handleChange={this.handleChange}
+							addFriend={this.addFriend}
+						/>
+					)}
 				/>
 			</div>
 		);
