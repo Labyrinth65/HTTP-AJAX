@@ -48,7 +48,7 @@ export class App extends Component {
 		axios
 			.post(`http://localhost:5000/friends`, newFriend)
 			.then(res => {
-				this.setState({ friends: res.data });
+				this.setState({ friends: res.data, name: "", age: "", email: "" });
 			})
 			.catch(err => {
 				this.setState({ error: err.message });
