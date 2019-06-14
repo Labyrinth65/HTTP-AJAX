@@ -36,8 +36,8 @@ export class CardRender extends Component {
 			);
 		} else
 			return (
-				<div className="updateForm">
-					<form>
+				<form onSubmit={this.formSubmit} className="updateForm">
+					<div>
 						<input
 							onChange={this.handleUpdate}
 							name="cardName"
@@ -45,6 +45,7 @@ export class CardRender extends Component {
 							value={this.state.cardName}
 							type="text"
 							className="cardElement"
+							required
 						/>
 						<input
 							onChange={this.handleUpdate}
@@ -53,6 +54,7 @@ export class CardRender extends Component {
 							value={this.state.cardAge}
 							type="number"
 							className="cardElement"
+							required
 						/>
 						<input
 							onChange={this.handleUpdate}
@@ -61,10 +63,11 @@ export class CardRender extends Component {
 							value={this.state.cardEmail}
 							type="email"
 							className="cardElement"
+							required
 						/>
-					</form>
-					<button onClick={this.formSubmit}>Submit Update</button>
-				</div>
+					</div>
+					<button>Submit Update</button>
+				</form>
 			);
 	}
 }

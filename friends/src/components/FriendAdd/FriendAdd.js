@@ -17,6 +17,7 @@ const FriendAdd = props => {
 					value={props.name}
 					type="text"
 					className="addElement"
+					required
 				/>
 				<label htmlFor="age">Age</label>
 				<input
@@ -27,6 +28,7 @@ const FriendAdd = props => {
 					value={props.age}
 					type="number"
 					className="addElement"
+					required
 				/>
 				<label htmlFor="email">Email</label>
 				<input
@@ -37,6 +39,7 @@ const FriendAdd = props => {
 					value={props.email}
 					type="email"
 					className="addElement"
+					required
 				/>
 				<button>Add Friend</button>
 			</form>
