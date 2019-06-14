@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const FriendAdd = props => {
 	return (
 		<div>
-			<Link exact to={`/`} className="toHome">
+			<Link to={`/`} className="toHome">
 				<button>Back to List</button>
 			</Link>
 			<form onSubmit={props.addFriend} className="friendAdd">
