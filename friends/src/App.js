@@ -48,9 +48,41 @@ export class App extends Component {
 		axios
 			.post(`http://localhost:5000/friends`, newFriend)
 			.then(res => {
+				this.setState({ friends: res.data, name: "", age: "", email: "" });
+			})
+			.catch(err => {
+				this.setState({ error: err.message });
+			});
+	};
+
+	deleteFriend = (e, id) => {
+		// this.setState(prevState => ({
+		// 	friends: prevState.friends.filter(friend => friend.id !== id)
+		// }));
+		e.preventDefault();
+		axios
+			.delete(`http://localhost:5000/friends/${id}`)
+			.then(res => {
 				this.setState({ friends: res.data });
 			})
 			.catch(err => {
+				console.log(err);
+				this.setState({ error: err.message });
+			});
+	};
+
+	updateFriend = (e, id, updatedFriend) => {
+		// this.setState(prevState => ({
+		// 	friends: prevState.friends.filter(friend => friend.id !== id)
+		// }));
+		e.preventDefault();
+		axios
+			.put(`http://localhost:5000/friends/${id}`, updatedFriend)
+			.then(res => {
+				this.setState({ friends: res.data });
+			})
+			.catch(err => {
+				console.log(err);
 				this.setState({ error: err.message });
 			});
 	};
@@ -58,11 +90,34 @@ export class App extends Component {
 	render() {
 		return (
 			<div>
-				<FriendList {...this.state} />
-				<FriendAdd
+				<Route
+					exact
+					path="/"
+					render={props => (
+						<FriendList
+							{...props}
+							friends={this.state.friends}
+							deleteFriend={this.deleteFriend}
+							updateFriend={this.updateFriend}
+							handleChange={this.handleChange}
+						/>
+					)}
+				/>
+				{/* <FriendList
 					{...this.state}
+					deleteFriend={this.deleteFriend}
+					updateFriend={this.updateFriend}
 					handleChange={this.handleChange}
-					addFriend={this.addFriend}
+				/> */}
+				<Route
+					path="/add"
+					render={props => (
+						<FriendAdd
+							{...props}
+							handleChange={this.handleChange}
+							addFriend={this.addFriend}
+						/>
+					)}
 				/>
 			</div>
 		);

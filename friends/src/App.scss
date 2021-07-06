@@ -1,7 +1,27 @@
-.friendList {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-evenly;
+.friendListWrap {
+	.friendList {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
+	}
+	.addNavigate {
+		display: flex;
+		justify-content: center;
+		margin: 1% 0;
+		.addNavButton {
+			text-decoration: none;
+			color: black;
+			button {
+				padding: 5% 10%;
+			}
+		}
+	}
+}
+
+.toHome {
+	button {
+		margin: 1%;
+	}
 }
 
 .friendCard {
@@ -15,7 +35,7 @@
 		font-size: 1.5rem;
 		text-align: center;
 	}
-	.deleteDiv {
+	.buttonDiv {
 		display: flex;
 		justify-content: flex-end;
 		.deleteButton {
@@ -37,5 +57,13 @@
 		width: 50%;
 		margin: 2% auto;
 		padding: 1%;
+	}
+}
+
+.updateForm {
+	display: flex;
+	button {
+		width: 70%;
+		height: 50%;
 	}
 }
